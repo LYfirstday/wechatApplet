@@ -4,6 +4,7 @@ export enum IndexActionType {
 }
 
 // 每个action中参数payload type
+// key为action的type,值为action的类型约束
 export interface ActionPayloadType {
   'addNumber': {
     number: number

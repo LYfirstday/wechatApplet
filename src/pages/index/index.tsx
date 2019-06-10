@@ -20,13 +20,13 @@ interface DispatchType {
   payload: ActionPayloadType[keyof ActionPayloadType]
 }
 
-type ConnectdispatchProps = {
+type ConnectDispatchProps = {
   dispatch: (data: DispatchType) => void
 }
 
-type IProps = IndexStateType & ConnectdispatchProps;
+type IProps = IndexStateType & ConnectDispatchProps;
 
-// IProps为装饰器注入的props类型，包括页面模型中state的类型和dispatch类型
+// IProps为装饰器注入的props类型，包括models中state的类型和dispatch类型
 // 如果是常规传props，则声明后写在泛型中
 interface Index {
   props: IProps
@@ -68,7 +68,7 @@ class Index extends Component {
 // #endregion
 
 // 组件的常规类型：props, state; 有就写没有就{}或any
-// {} 是常规传入的props  这种方式：<Com props={...props}/>
+// 第一个{} 是常规传入的props类型  这种方式：<Com props={...props}/>
 export default Index as ComponentClass<{}, {}>
 
 
