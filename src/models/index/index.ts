@@ -19,12 +19,20 @@ export interface IndexStateType {
   key: string
 }
 
-export default {
+interface Index {
+  namespace: string,
+  state: IndexStateType,
+  reducers?: any,
+  effects?: any
+}
+
+const Index: Index = {
   namespace: 'index',
   state: {
     number: 1,
     name: 'aaa',
-    age: 14
+    age: 14,
+    key: 's'
   },
   reducers: {
     addNumber(state: IndexStateType, action: { payload: ActionPayloadType['addNumber'] }) {
@@ -37,3 +45,4 @@ export default {
   effects: {}
 }
 
+export default Index
