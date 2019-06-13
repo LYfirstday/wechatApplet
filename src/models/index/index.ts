@@ -1,17 +1,21 @@
 // app首页
 export enum IndexActionType {
-  ADDNUMBER = 'addNumber'
+  ADDNUMBER = 'addNumber',
+  TEST = 'test'
 }
-
 // 每个action中参数payload type
 // key为action的type,值为action的类型约束
 export interface ActionPayloadType {
-  'addNumber': {
+  [IndexActionType.ADDNUMBER]: {
     number: number
+  },
+  [IndexActionType.TEST]: {
+    name: string,
+    age: number
   }
 }
 
-// 是对应组件装饰器的props type
+// 模块的state类型声明；对应UI组件装饰器的props type
 export interface IndexStateType {
   number: number,
   name: string,

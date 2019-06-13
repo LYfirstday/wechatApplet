@@ -3,7 +3,7 @@ import Taro, { Component, Config } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
 import './index.less'
-import { IndexStateType, IndexActionType, ActionPayloadType } from './../../models/index/index';
+import { IndexStateType, ActionPayloadType, IndexActionType } from './../../models/index/index';
 
 // #region 书写注意
 //
@@ -15,13 +15,13 @@ import { IndexStateType, IndexActionType, ActionPayloadType } from './../../mode
 //
 // #endregion
 
-interface DispatchType {
-  type: keyof ActionPayloadType,
-  payload: ActionPayloadType[keyof ActionPayloadType]
+interface DispatchType<T extends IndexActionType>{
+  type: T,
+  payload: ActionPayloadType[T]
 }
 
 type ConnectDispatchProps = {
-  dispatch: (data: DispatchType) => void
+  dispatch: <T extends IndexActionType>(data: DispatchType<T>) => void
 }
 
 type IProps = IndexStateType & ConnectDispatchProps;
@@ -46,8 +46,9 @@ class Index extends Component {
     this.props.dispatch({
       type: IndexActionType.ADDNUMBER,
       payload: {
-        number: 1
-      }
+        number: 1,
+
+      },
     });
   }
 
